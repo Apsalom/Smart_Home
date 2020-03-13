@@ -1,0 +1,163 @@
+
+<html>
+<head>
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+	<style>
+		.Pos
+		  {
+            background-color: blue;
+
+		  }
+		  .Page1
+		  {
+		  	position: relative;
+		  	top: 150px;
+		  	
+		  	height: 450px;
+		  }
+		  .Page2
+		  {
+		  	position: relative;
+		  	top: 150px;
+		  	font-size: 30;
+		  	color: white;
+		  	text-align: center;
+		  	
+		  }
+		  .Page3
+		  {
+		  	position: relative;
+		  	top:100px;
+		  	font-size: 30px;
+		  	color: white;
+		  }
+         #p1 ,#p2 
+          {
+            background-color:#382e33;
+            height: 1000px;
+          } 
+          #p4
+          {
+          	background-color: #382e33;
+          	height: 1000px;
+          }
+         
+         .circle1
+            {
+             top:50px;
+             float: left;
+             text-align: center;
+             position: relative;
+             display: inline-block;
+             width: 200px;
+             height: 200px;
+             border-radius: 70%;
+             font-size: 35px;
+             color: white;
+             margin-left:7%;
+             line-height: 200px;
+             background: black;
+             text-decoration: none;
+            }
+          .circle1:hover{
+          	background-color: #b30000;
+          }
+          .circle
+            {
+             top:50px;
+             right: 50px;
+             text-align: center;
+             position: relative;
+             display: inline-block;
+             width: 200px;
+             height: 200px;
+             border-radius: 70%;
+             font-size: 50px;
+             color: white;
+             margin-left:7%;
+             line-height: 200px;
+             background: black;
+             text-decoration: none;
+            }
+          .circle:hover{
+          	background-color: #b30000;
+          }
+          .post
+          {
+          	position: relative;
+          	
+          }  
+          h1{
+          	font-size: 50px;
+          	color: white;
+          }
+            
+	</style>
+</head>
+<body>
+  <section id="p1">
+  	
+  	<div class="Page1">
+  		<center><h1>WELCOME USER</h1></center>
+  	  <a class="circle1" href="#p2">Temp</a>
+  		  <a class="circle1" href="#p4">Moisture</a>
+  		 
+  		<a class="circle1" href="/water">Waterlevel</a>
+  		<a  class="circle1">Irrigation</a>
+      
+  	</div>
+
+  </section>
+   <section id="p2">
+  	<div class="Page2">
+  		<p>TEMPERATURE</p>
+  		<div class="post">
+  			<img src="/Temp.jpg" width="500" height="400"></img>
+  		</div>
+  		<div class="circle" id="Value"></div>
+  		<br><br><br><br><button onclick="Random()" >Refresh</button>
+  	</div>
+
+
+
+   </section>	
+   <br><br>
+   <section id="p4">
+        	  
+     	  <div class="Page2">
+      	  	<p>SOIL MOISTURE</p>
+   	  	<div class="post">
+  		<img src="Soil.jpeg"  width="500"></img>
+  	  </div>
+  	  <div class="circle" id="val"></div>
+  	  <br><br><br><br><button onclick="activityLoad()">Refresh</button>
+     </div>  
+   </section>
+
+
+
+</body>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script>
+	
+	function Random() {
+		  
+          var n= Math.floor(Math.random()*100);
+          console.log(n);
+          var temp= <%= temp%>;
+          var mois="<%= mois%>";
+          document.getElementById("Value").innerHTML=temp;
+          document.getElementById("val").innerHTML=mois;
+	}
+
+        function activityLoad()
+        {
+          $.ajax({
+          url: "/activity",
+          type: "GET",
+         });
+        }
+         
+</script>
+</html>
